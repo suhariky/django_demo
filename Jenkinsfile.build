@@ -1,9 +1,12 @@
 pipeline{
     agent any
+    environment{
+	IMG_NAME = qwerty112358/django_jenkins
+    }
     stages{
         stage("build"){
 	    steps{
-		sh "docker build -t qwerty112358/django_jenkins:${GIT_COMMIT} -t qwerty112358/django_jenkins:latest ."
+		sh "docker build -t ${IMG_NAME}:${GIT_COMMIT} -t ${IMG_NAME}:latest ."
 	    }
 	}
     }
