@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment{
-	IMG_NAME = qwerty112358/django_jenkins
+	IMG_NAME = "qwerty112358/django_jenkins"
     }
     stages{
         stage("build"){
