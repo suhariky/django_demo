@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("test"){
             steps{
-                build job: "https://jenkins.mshp-devops.com/job/lib/job/django-test-parametrized/",
+                build job: "/job/Сухорукова%20Мария/job/django%20repo/",
                 parameters: [
                     string(name: 'GIT_URL', value: "${GIT_URL}"),
                     string(name: 'GIT_BRANCH', value: "${GIT_BRANCH}")
