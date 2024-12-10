@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    environment{
+        IMAGE_NAME = "qwerty112358/django_jenkins"
+    }
     stages{
         stage("test"){
             steps{
