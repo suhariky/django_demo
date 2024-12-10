@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("test"){
             steps{
-                build job: "/Сухорукова%20Мария/django%20repo/",
+                build job: "/lib/django-test-parametrized/",
                 parameters: [
                     string(name: 'GIT_URL', value: "${GIT_URL}"),
                     string(name: 'GIT_BRANCH', value: "${GIT_BRANCH}")
