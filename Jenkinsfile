@@ -6,7 +6,7 @@ pipeline{
     stages{
         stage("build"){
             steps{
-                build job: "/lib/django%20build%20parametrized/",
+                build job: "/lib/django build parametrized/",
                 parameters: [
                     string(name: 'GIT_URL', value: "${GIT_URL}"),
                     string(name: 'GIT_BRANCH', value: "${GIT_BRANCH}"),
