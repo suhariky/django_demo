@@ -11,7 +11,7 @@ pipeline{
                     string(name: 'GIT_URL', value: "${GIT_URL}"),
                     string(name: 'GIT_BRANCH', value: "${GIT_BRANCH}"),
                     string(name: 'IMAGE_NAME', value: "${IMAGE_NAME}"),
-                    string(name: 'GIT_COMMIT_HASH', value: "${GIT_COMMIT_HASH}")
+                    string(name: 'GIT_COMMIT_HASH', value: "${GIT_COMMIT}")
                 ]
             }
         }
