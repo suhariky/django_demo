@@ -25,13 +25,13 @@ pipeline{
             }
         }
         stage("push"){
-			steps{
-				withCredentials([usernamePassword(credentialsId: 'docker_pass', usernameVariable: 
-				'USERNAME', passwordVariable: 'PASSWORD')]) {
-					sh 'docker login -u ${USERNAME} -p ${PASSWORD}'
-					sh 'docker push ${IMG_NAME}:${GIT_COMMIT}'
-				}	
-			}
+		steps{
+			withCredentials([usernamePassword(credentialsId: 'docker_pass', usernameVariable: 
+			'USERNAME', passwordVariable: 'PASSWORD')]) {
+				sh 'docker login -u ${USERNAME} -p ${PASSWORD}'
+				sh 'docker push ${IMG_NAME}:${GIT_COMMIT}'
+			}	
 		}
+	}
     }
 }
