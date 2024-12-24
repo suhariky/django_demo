@@ -4,7 +4,7 @@ pipeline{
         IMAGE_NAME = "qwerty112358/django_jenkins"
 	PROD_CRED_ID = "devops_prod_key"        
 	PROD_ADDRESS_CRED_ID = "devops_prod_address"        
-	PROJECT_NAME = "Sukhorukova_django"
+	PROJECT_NAME = "Сухорукова Мария"
     }
     stages{
         stage("build"){
