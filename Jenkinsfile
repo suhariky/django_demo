@@ -30,6 +30,7 @@ pipeline{
 			'USERNAME', passwordVariable: 'PASSWORD')]) {
 				sh 'docker login -u ${USERNAME} -p ${PASSWORD}'
 				sh 'docker push ${IMAGE_NAME}:${GIT_COMMIT}'
+				sh 'docker push ${IMAGE_NAME}:latest'
 			}	
 		}
 	}
