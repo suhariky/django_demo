@@ -1,0 +1,6 @@
+version: "3"
+services:  
+  backend:
+    image: qwerty112358/django_jenkins:latest
+    ports:
+      - "8098:8000"
