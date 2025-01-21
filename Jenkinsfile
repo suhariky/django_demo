@@ -55,6 +55,7 @@ pipeline{
 			withCredentials([sshUserPrivateKey(credentialsId: "${PROD_CRED_ID}", keyFileVariable: 'KEY_FILE', usernameVariable:'USERNAME'),                        
 			string(credentialsId: "${PROD_ADDRESS_CRED_ID}", variable:'SERVER_ADDRESS')]){ 
 				sh 'scp -o StrictHostKeyChecking=no -i "${KEY_FILE}" Sukhorukova.prod.mshp-devops.conf ${USERNAME}@${SERVER_ADDRESS}:nginx'
+				sh 'ssh -o StrictHostKeyChecking=no -i "${KEY_FILE}" ${USERNAME}@${SERVER_ADDRESS}  sudo certbot --nginx --non-interactive --agree-tos -m eml@n.com -d Sukhorukova.prod.mshp-devops.com'
 				sh 'ssh -o StrictHostKeyChecking=no -i "${KEY_FILE}" ${USERNAME}@${SERVER_ADDRESS}  sudo systemctl reload nginx'
 			}
 		}
