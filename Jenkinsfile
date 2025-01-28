@@ -5,6 +5,10 @@ pipeline{
 	PROD_CRED_ID = "devops_prod_key"        
 	PROD_ADDRESS_CRED_ID = "devops_prod_address"        
 	PROJECT_NAME = "Sukhorukova_django"
+	SONAR_CRED_ID = "sonar_token"
+        DOMAIN = "Sukhorukova.prod.mshp-devops.com"
+        SONARQUBE_URL = "84.201.184.207:9001"
+        SONAR_PROJECT_KEY = "django_sukhorukova"
     }
     stages{
         stage("build"){
@@ -25,6 +29,25 @@ pipeline{
                     string(name: 'GIT_URL', value: "${GIT_URL}"),
                     string(name: 'GIT_BRANCH', value: "${GIT_BRANCH}")
                 ]
+            }
+        }
+        stage("scan") {
+            steps {
+                withCredentials(
+                    [
+                        string(credentialsId: "${SONAR_CRED_ID}", variable:'TOKEN')
+                    ]
+                        ) {
+                    sh '''
+                            docker run \
+	                    --rm \
+	                    -e SONAR_HOST_URL="http://${SONARQUBE_URL}" \
+	                    -e SONAR_SCANNER_OPTS="-Dsonar.projectKey=${SONAR_PROJECT_KEY}" \
+	                    -e SONAR_TOKEN="${TOKEN}" \
+	                    -v "./:/usr/src" \
+	                    sonarsource/sonar-scanner-cli
+                       '''
+                }
             }
         }
         stage("push"){
